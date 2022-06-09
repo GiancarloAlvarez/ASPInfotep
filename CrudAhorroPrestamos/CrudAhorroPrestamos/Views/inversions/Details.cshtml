@@ -1,0 +1,66 @@
+﻿@model CrudAhorroPrestamos.Models.inversion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>inversion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasaInteres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasaInteres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRembolso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRembolso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_inversion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

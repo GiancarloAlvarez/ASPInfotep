@@ -1,0 +1,29 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("AhorroDB", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Clientes", "Index", "Clientes")</li>
+                <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                <li>@Html.ActionLink("Cuenta", "Index", "CuentaBancarias")</li>
+                <li>@Html.ActionLink("Inversiones", "Index", "inversions")</li>
+
+                <li>@Html.ActionLink("Prestamo", "Index", "prestamos")</li>
+                <li>@Html.ActionLink("Rol_Cliente", "Index", "Rol_Cliente3")</li>
+
+                <li>@Html.ActionLink("Rol_Usuario", "Index", "Rol_usuario")</li>
+                <li>@Html.ActionLink("Garantias", "Index", "Garantias")</li>
+                <li>@Html.ActionLink("Rol", "Index", "Rol3")</li>
+                <li>@Html.ActionLink("Cuota", "Index", "CuotaPs")</li>
+
+            </ul>
+        </div>
+    </div>
+</div>

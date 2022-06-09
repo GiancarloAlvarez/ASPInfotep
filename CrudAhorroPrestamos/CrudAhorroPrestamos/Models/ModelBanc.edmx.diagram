@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a38d9c67c0242ff9027df033fd95638" Name="Diagram1">
+        <EntityTypeShape EntityType="ADBPrestamosModel.Cliente" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.CuentaBancaria" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Cuota" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Garantia" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.inversion" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.prestamos" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol_Cliente" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol_usuario" Width="1.5" PointX="8" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Usuarios" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__CuentaBan__id_cl__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__inversion__id_cl__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__prestamos__id_cl__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_cl__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Cuota__id_presta__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Garantia__id_pre__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_ro__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_usuar__id_us__47DBAE45" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol_Cliente2" Width="1.5" PointX="9.375" PointY="5" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol2" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_cl__4CA06362" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_ro__4D94879B" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol_Cliente3" Width="1.5" PointX="8" PointY="9.875" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol3" Width="1.5" PointX="5.75" PointY="16.875" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_cl__52593CB8" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_ro__534D60F1" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.CuotaP" Width="1.5" PointX="8.25" PointY="13" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__CuotaP__id_clien__5629CD9C" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__CuotaP__id_prest__571DF1D5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbPrestamoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="db_cliente">
+    <Key>
+      <PropertyRef Name="ID_Cliente" />
+    </Key>
+    <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_Cliente" Type="varchar" MaxLength="1" />
+    <Property Name="apellido_Cliente" Type="varchar" MaxLength="1" />
+    <Property Name="cedula_Cliente" Type="varchar" MaxLength="1" />
+    <Property Name="direccion_Cliente" Type="varchar" MaxLength="1" />
+    <Property Name="telefono_Cliente" Type="varchar" MaxLength="1" />
+    <Property Name="Cliente_IsPrestamista" Type="bit" />
+    <Property Name="Cliente_IsInversionista" Type="bit" />
+    <Property Name="Cliente_IsFiador" Type="bit" />
+  </EntityType>
+  <EntityType Name="db_cuentaBanco">
+    <Key>
+      <PropertyRef Name="ID_Cuenta" />
+    </Key>
+    <Property Name="ID_Cuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numero_Cuenta" Type="varchar" MaxLength="1" />
+    <Property Name="tipo_Cuenta" Type="varchar" MaxLength="1" />
+    <Property Name="Cliente_ID" Type="int" />
+    <Property Name="Monto_Cuenta" Type="float" />
+  </EntityType>
+  <EntityType Name="DB_CUOTAINVERSION">
+    <Key>
+      <PropertyRef Name="ID_CuotaInversion" />
+    </Key>
+    <Property Name="ID_CuotaInversion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cantidad_CuotasInversion" Type="int" />
+    <Property Name="Monto_CuotasInversion" Type="int" />
+    <Property Name="fecha_PlanificadaInversion" Type="datetime" />
+    <Property Name="fechaEfectivaInversion" Type="datetime" />
+    <Property Name="modalidad_InversionCuota" Type="datetime" />
+    <Property Name="codigo_ComprobantePI" Type="varchar" MaxLength="1" />
+    <Property Name="Inversion_id" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_CUOTAPAGOS">
+    <Key>
+      <PropertyRef Name="ID_CuotaPago" />
+    </Key>
+    <Property Name="ID_CuotaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cantidad_CuotasPago" Type="int" />
+    <Property Name="Monto_CuotasPago" Type="int" />
+    <Property Name="fecha_PlanificadaPago" Type="datetime" />
+    <Property Name="fechaEfectivaPago" Type="datetime" />
+    <Property Name="modalidad_PagoCuota" Type="varchar" MaxLength="1" />
+    <Property Name="codigo_ComprobantePC" Type="varchar" MaxLength="1" />
+    <Property Name="Prestamo_id" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_GARANTIA">
+    <Key>
+      <PropertyRef Name="ID_Garantia" />
+    </Key>
+    <Property Name="ID_Garantia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo_Garantia" Type="varchar" MaxLength="1" />
+    <Property Name="tipo_Garantia" Type="varchar" MaxLength="1" />
+    <Property Name="valor_Garantia" Type="float" />
+    <Property Name="ubicacion_Garantia" Type="varchar" MaxLength="1" />
+    <Property Name="Prestamo_id" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_INVERSIONES">
+    <Key>
+      <PropertyRef Name="ID_Inversion" />
+    </Key>
+    <Property Name="ID_Inversion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo_Inversion" Type="varchar" MaxLength="1" />
+    <Property Name="monto_inversion" Type="float" />
+    <Property Name="tasaInteres_Inversion" Type="float" />
+    <Property Name="fiador_Inversion" Type="varchar" MaxLength="1" />
+    <Property Name="garantia_Inversion" Type="varchar" MaxLength="1" />
+    <Property Name="cliente_id" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_PRESTAMO">
+    <Key>
+      <PropertyRef Name="ID_Prestamo" />
+    </Key>
+    <Property Name="ID_Prestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo_Prestamo" Type="varchar" MaxLength="1" />
+    <Property Name="fecha_Ingreso" Type="datetime" />
+    <Property Name="fecha_Aprobacion" Type="datetime" />
+    <Property Name="fecha_InicioPrestamo" Type="datetime" />
+    <Property Name="fecha_FinPrestamo" Type="datetime" />
+    <Property Name="monto_Prestamo" Type="float" />
+    <Property Name="tasaInteres_Prestamo" Type="float" />
+    <Property Name="cliente_id" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_ROLC">
+    <Key>
+      <PropertyRef Name="ID_RolCliente" />
+    </Key>
+    <Property Name="ID_RolCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_RolC" Type="varchar" MaxLength="1" />
+    <Property Name="Cliente_id" Type="int" />
+  </EntityType>
+  <EntityType Name="db_RolCli">
+    <Key>
+      <PropertyRef Name="ID_RolCli" />
+    </Key>
+    <Property Name="ID_RolCli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Cliente" Type="int" />
+    <Property Name="id_RolClient" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_RolUsuario">
+    <Key>
+      <PropertyRef Name="ID_RolUsuario" />
+    </Key>
+    <Property Name="ID_RolUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_RolU" Type="varchar" MaxLength="1" />
+    <Property Name="Usuario_id" Type="int" />
+  </EntityType>
+  <EntityType Name="DB_Usuario">
+    <Key>
+      <PropertyRef Name="ID_Usuarios" />
+    </Key>
+    <Property Name="ID_Usuarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_Usuario" Type="varchar" MaxLength="1" />
+    <Property Name="contraseña_Usuario" Type="varchar" MaxLength="1" />
+    <Property Name="tipo_Usuario" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK__db_cuenta__Clien__286302EC">
+    <End Role="db_cliente" Type="Self.db_cliente" Multiplicity="0..1" />
+    <End Role="db_cuentaBanco" Type="Self.db_cuentaBanco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="db_cliente">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="db_cuentaBanco">
+        <PropertyRef Name="Cliente_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DB_CUOTAI__Inver__36B12243">
+    <End Role="DB_INVERSIONES" Type="Self.DB_INVERSIONES" Multiplicity="0..1" />
+    <End Role="DB_CUOTAINVERSION" Type="Self.DB_CUOTAINVERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_INVERSIONES">
+        <PropertyRef Name="ID_Inversion" />
+      </Principal>
+      <Dependent Role="DB_CUOTAINVERSION">
+        <PropertyRef Name="Inversion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DB_CUOTAP__Prest__33D4B598">
+    <End Role="DB_PRESTAMO" Type="Self.DB_PRESTAMO" Multiplicity="0..1" />
+    <End Role="DB_CUOTAPAGOS" Type="Self.DB_CUOTAPAGOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_PRESTAMO">
+        <PropertyRef Name="ID_Prestamo" />
+      </Principal>
+      <Dependent Role="DB_CUOTAPAGOS">
+        <PropertyRef Name="Prestamo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DB_GARANT__Prest__30F848ED">
+    <End Role="DB_PRESTAMO" Type="Self.DB_PRESTAMO" Multiplicity="0..1" />
+    <End Role="DB_GARANTIA" Type="Self.DB_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_PRESTAMO">
+        <PropertyRef Name="ID_Prestamo" />
+      </Principal>
+      <Dependent Role="DB_GARANTIA">
+        <PropertyRef Name="Prestamo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DB_INVERS__clien__2E1BDC42">
+    <End Role="db_cliente" Type="Self.db_cliente" Multiplicity="0..1" />
+    <End Role="DB_INVERSIONES" Type="Self.DB_INVERSIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="db_cliente">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="DB_INVERSIONES">
+        <PropertyRef Name="cliente_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DB_PRESTA__clien__2B3F6F97">
+    <End Role="db_cliente" Type="Self.db_cliente" Multiplicity="0..1" />
+    <End Role="DB_PRESTAMO" Type="Self.DB_PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="db_cliente">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="DB_PRESTAMO">
+        <PropertyRef Name="cliente_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__db_RolCli__id_Cl__3E52440B">
+    <End Role="db_cliente" Type="Self.db_cliente" Multiplicity="0..1" />
+    <End Role="db_RolCli" Type="Self.db_RolCli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="db_cliente">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="db_RolCli">
+        <PropertyRef Name="id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__db_RolCli__id_Ro__3F466844">
+    <End Role="DB_ROLC" Type="Self.DB_ROLC" Multiplicity="0..1" />
+    <End Role="db_RolCli" Type="Self.db_RolCli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_ROLC">
+        <PropertyRef Name="ID_RolCliente" />
+      </Principal>
+      <Dependent Role="db_RolCli">
+        <PropertyRef Name="id_RolClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DB_RolUsu__Usuar__4222D4EF">
+    <End Role="DB_Usuario" Type="Self.DB_Usuario" Multiplicity="0..1" />
+    <End Role="DB_RolUsuario" Type="Self.DB_RolUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_Usuario">
+        <PropertyRef Name="ID_Usuarios" />
+      </Principal>
+      <Dependent Role="DB_RolUsuario">
+        <PropertyRef Name="Usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbPrestamoModelStoreContainer">
+    <EntitySet Name="db_cliente" EntityType="Self.db_cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="db_cuentaBanco" EntityType="Self.db_cuentaBanco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_CUOTAINVERSION" EntityType="Self.DB_CUOTAINVERSION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_CUOTAPAGOS" EntityType="Self.DB_CUOTAPAGOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_GARANTIA" EntityType="Self.DB_GARANTIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_INVERSIONES" EntityType="Self.DB_INVERSIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_PRESTAMO" EntityType="Self.DB_PRESTAMO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_ROLC" EntityType="Self.DB_ROLC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="db_RolCli" EntityType="Self.db_RolCli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_RolUsuario" EntityType="Self.DB_RolUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DB_Usuario" EntityType="Self.DB_Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__db_cuenta__Clien__286302EC" Association="Self.FK__db_cuenta__Clien__286302EC">
+      <End Role="db_cliente" EntitySet="db_cliente" />
+      <End Role="db_cuentaBanco" EntitySet="db_cuentaBanco" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DB_CUOTAI__Inver__36B12243" Association="Self.FK__DB_CUOTAI__Inver__36B12243">
+      <End Role="DB_INVERSIONES" EntitySet="DB_INVERSIONES" />
+      <End Role="DB_CUOTAINVERSION" EntitySet="DB_CUOTAINVERSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DB_CUOTAP__Prest__33D4B598" Association="Self.FK__DB_CUOTAP__Prest__33D4B598">
+      <End Role="DB_PRESTAMO" EntitySet="DB_PRESTAMO" />
+      <End Role="DB_CUOTAPAGOS" EntitySet="DB_CUOTAPAGOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DB_GARANT__Prest__30F848ED" Association="Self.FK__DB_GARANT__Prest__30F848ED">
+      <End Role="DB_PRESTAMO" EntitySet="DB_PRESTAMO" />
+      <End Role="DB_GARANTIA" EntitySet="DB_GARANTIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DB_INVERS__clien__2E1BDC42" Association="Self.FK__DB_INVERS__clien__2E1BDC42">
+      <End Role="db_cliente" EntitySet="db_cliente" />
+      <End Role="DB_INVERSIONES" EntitySet="DB_INVERSIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DB_PRESTA__clien__2B3F6F97" Association="Self.FK__DB_PRESTA__clien__2B3F6F97">
+      <End Role="db_cliente" EntitySet="db_cliente" />
+      <End Role="DB_PRESTAMO" EntitySet="DB_PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__db_RolCli__id_Cl__3E52440B" Association="Self.FK__db_RolCli__id_Cl__3E52440B">
+      <End Role="db_cliente" EntitySet="db_cliente" />
+      <End Role="db_RolCli" EntitySet="db_RolCli" />
+    </AssociationSet>
+    <AssociationSet Name="FK__db_RolCli__id_Ro__3F466844" Association="Self.FK__db_RolCli__id_Ro__3F466844">
+      <End Role="DB_ROLC" EntitySet="DB_ROLC" />
+      <End Role="db_RolCli" EntitySet="db_RolCli" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DB_RolUsu__Usuar__4222D4EF" Association="Self.FK__DB_RolUsu__Usuar__4222D4EF">
+      <End Role="DB_Usuario" EntitySet="DB_Usuario" />
+      <End Role="DB_RolUsuario" EntitySet="DB_RolUsuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

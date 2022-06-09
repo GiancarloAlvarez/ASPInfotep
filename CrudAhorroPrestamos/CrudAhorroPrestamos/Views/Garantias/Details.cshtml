@@ -1,0 +1,50 @@
+﻿@model CrudAhorroPrestamos.Models.Garantia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Garantia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoGarantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoGarantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoGarantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoGarantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prestamos.CodigoPrestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prestamos.CodigoPrestamo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_garantia }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

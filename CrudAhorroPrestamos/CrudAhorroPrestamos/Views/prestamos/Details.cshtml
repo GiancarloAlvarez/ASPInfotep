@@ -1,0 +1,90 @@
+﻿@model CrudAhorroPrestamos.Models.prestamos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>prestamos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPrestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPrestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSolicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSolicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAprobacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAprobacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaTermico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaTermico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RetornoCapital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetornoCapital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoPrestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoPrestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasaInteres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasaInteres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_prestamo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

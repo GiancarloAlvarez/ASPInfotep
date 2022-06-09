@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>BancoAP:Login</title>
+</head>
+<body class="bg1 body-login">
+    
+    <div class="box">
+       
+        <h2>Login</h2>
+        
+        <form action="@Url.Content("~/Login")" method="post">
+            <div class="input-box">
+                <input type="text" name="User" id="" required="">
+                <label>Username</label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="Pass" id="" required="">
+                <label>Password</label>
+
+            </div>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

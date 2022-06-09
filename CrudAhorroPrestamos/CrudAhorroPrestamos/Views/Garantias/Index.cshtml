@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CrudAhorroPrestamos.Models.Garantia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoGarantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoGarantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prestamos.CodigoPrestamo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoGarantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoGarantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prestamos.CodigoPrestamo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_garantia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_garantia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_garantia })
+        </td>
+    </tr>
+}
+
+</table>

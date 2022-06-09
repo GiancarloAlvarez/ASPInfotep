@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CrudAhorroPrestamos.Models.inversion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoInversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoInversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TasaInteres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRembolso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoInversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoInversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TasaInteres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaRembolso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_inversion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_inversion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_inversion })
+        </td>
+    </tr>
+}
+
+</table>

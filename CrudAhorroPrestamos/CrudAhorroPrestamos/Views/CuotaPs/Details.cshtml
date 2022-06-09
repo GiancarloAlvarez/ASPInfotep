@@ -1,0 +1,98 @@
+﻿@model CrudAhorroPrestamos.Models.CuotaP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CuotaP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoCuota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoCuota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEfectivaCuota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEfectivaCuota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plazo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plazo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prestamos.CodigoPrestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prestamos.CodigoPrestamo)
+        </dd>
+
+    </dl>
+</div>
+    <h1>Tabla Amortizacion</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Cuota</th>
+            <th>Interes Mensual</th>
+            <th>Amortizacion Principal</th>
+            <th>Amortizacion Total</th>
+            <th>Capital Pendiente</th>
+            <th>Fecha</th>
+
+        </tr>
+    </thead>
+    @{ 
+        CrudAhorroPrestamos.Models.prestamos prestamos = new CrudAhorroPrestamos.Models.prestamos();
+        double capital =Convert.ToDouble(prestamos.MontoPrestamo);
+
+
+        
+
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_cuota }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

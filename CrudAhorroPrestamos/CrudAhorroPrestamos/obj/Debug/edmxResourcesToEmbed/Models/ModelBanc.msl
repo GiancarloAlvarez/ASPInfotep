@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ADBPrestamosModelStoreContainer" CdmEntityContainer="ADBPrestamosEntities">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuentaBancaria">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.CuentaBancaria">
+        <MappingFragment StoreEntitySet="CuentaBancaria">
+          <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+          <ScalarProperty Name="TipoCuenta" ColumnName="TipoCuenta" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuota">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Cuota">
+        <MappingFragment StoreEntitySet="Cuota">
+          <ScalarProperty Name="id_cuota" ColumnName="id_cuota" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+          <ScalarProperty Name="FechaEfectivaCuota" ColumnName="FechaEfectivaCuota" />
+          <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Garantia">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Garantia">
+        <MappingFragment StoreEntitySet="Garantia">
+          <ScalarProperty Name="id_garantia" ColumnName="id_garantia" />
+          <ScalarProperty Name="CodigoGarantia" ColumnName="CodigoGarantia" />
+          <ScalarProperty Name="TipoGarantia" ColumnName="TipoGarantia" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inversion">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.inversion">
+        <MappingFragment StoreEntitySet="inversion">
+          <ScalarProperty Name="id_inversion" ColumnName="id_inversion" />
+          <ScalarProperty Name="CodigoInversion" ColumnName="CodigoInversion" />
+          <ScalarProperty Name="MontoInversion" ColumnName="MontoInversion" />
+          <ScalarProperty Name="TasaInteres" ColumnName="TasaInteres" />
+          <ScalarProperty Name="FechaInversion" ColumnName="FechaInversion" />
+          <ScalarProperty Name="FechaRembolso" ColumnName="FechaRembolso" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prestamos">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.prestamos">
+        <MappingFragment StoreEntitySet="prestamos">
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+          <ScalarProperty Name="CodigoPrestamo" ColumnName="CodigoPrestamo" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaTermico" ColumnName="FechaTermico" />
+          <ScalarProperty Name="RetornoCapital" ColumnName="RetornoCapital" />
+          <ScalarProperty Name="MontoPrestamo" ColumnName="MontoPrestamo" />
+          <ScalarProperty Name="TasaInteres" ColumnName="TasaInteres" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_Cliente">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol_Cliente">
+        <MappingFragment StoreEntitySet="Rol_Cliente">
+          <ScalarProperty Name="id_rol_cliente" ColumnName="id_rol_cliente" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_usuario">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol_usuario">
+        <MappingFragment StoreEntitySet="Rol_usuario">
+          <ScalarProperty Name="id_rol_usuario" ColumnName="id_rol_usuario" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_Cliente2">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol_Cliente2">
+        <MappingFragment StoreEntitySet="Rol_Cliente2">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_rol_cliente" ColumnName="id_rol_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol2">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol2">
+        <MappingFragment StoreEntitySet="Rol2">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_Cliente3">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol_Cliente3">
+        <MappingFragment StoreEntitySet="Rol_Cliente3">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_rol_cliente" ColumnName="id_rol_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol3">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.Rol3">
+        <MappingFragment StoreEntitySet="Rol3">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuotaP">
+      <EntityTypeMapping TypeName="ADBPrestamosModel.CuotaP">
+        <MappingFragment StoreEntitySet="CuotaP">
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+          <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+          <ScalarProperty Name="FechaEfectivaCuota" ColumnName="FechaEfectivaCuota" />
+          <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="id_cuota" ColumnName="id_cuota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
