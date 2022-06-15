@@ -24,6 +24,9 @@ namespace CrudAhorroPrestamos.Models
             this.Rol_Cliente2 = new HashSet<Rol_Cliente2>();
             this.Rol_Cliente3 = new HashSet<Rol_Cliente3>();
             this.CuotaP = new HashSet<CuotaP>();
+            this.CuotaPr = new HashSet<CuotaPr>();
+            this.prestamos1 = new HashSet<prestamos1>();
+            this.inversion1 = new HashSet<inversion1>();
         }
     
         public int id_cliente { get; set; }
@@ -46,5 +49,11 @@ namespace CrudAhorroPrestamos.Models
         public virtual ICollection<Rol_Cliente3> Rol_Cliente3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CuotaP> CuotaP { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CuotaPr> CuotaPr { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<prestamos1> prestamos1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inversion1> inversion1 { get; set; }
     }
 }

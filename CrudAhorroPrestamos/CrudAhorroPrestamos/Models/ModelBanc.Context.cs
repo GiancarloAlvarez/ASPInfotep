@@ -40,5 +40,9 @@ namespace CrudAhorroPrestamos.Models
         public virtual DbSet<Rol_Cliente3> Rol_Cliente3 { get; set; }
         public virtual DbSet<Rol3> Rol3 { get; set; }
         public virtual DbSet<CuotaP> CuotaP { get; set; }
+        public virtual DbSet<CuotaPr> CuotaPr { get; set; }
+        public virtual DbSet<GarantiaPr> GarantiaPr { get; set; }
+        public virtual DbSet<prestamos1> prestamos1 { get; set; }
+        public virtual DbSet<inversion1> inversion1 { get; set; }
     }
 }

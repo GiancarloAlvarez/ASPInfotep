@@ -134,8 +134,10 @@
     <Compile Include="Controllers\CuotasController.cs" />
     <Compile Include="Controllers\GarantiasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\inversion1Controller.cs" />
     <Compile Include="Controllers\inversionsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\prestamos1Controller.cs" />
     <Compile Include="Controllers\prestamosController.cs" />
     <Compile Include="Controllers\Rol3Controller.cs" />
     <Compile Include="Controllers\Rol_Cliente3Controller.cs" />
@@ -157,10 +159,19 @@
     <Compile Include="Models\CuotaP.cs">
       <DependentUpon>ModelBanc.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CuotaPr.cs">
+      <DependentUpon>ModelBanc.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Garantia.cs">
       <DependentUpon>ModelBanc.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GarantiaPr.cs">
+      <DependentUpon>ModelBanc.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\inversion.cs">
+      <DependentUpon>ModelBanc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inversion1.cs">
       <DependentUpon>ModelBanc.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelBanc.Context.cs">
@@ -179,6 +190,9 @@
       <DependentUpon>ModelBanc.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\prestamos.cs">
+      <DependentUpon>ModelBanc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\prestamos1.cs">
       <DependentUpon>ModelBanc.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
@@ -323,6 +337,16 @@
     <Content Include="Views\CuotaPs\Details.cshtml" />
     <Content Include="Views\CuotaPs\Edit.cshtml" />
     <Content Include="Views\CuotaPs\Index.cshtml" />
+    <Content Include="Views\prestamos1\Create.cshtml" />
+    <Content Include="Views\prestamos1\Delete.cshtml" />
+    <Content Include="Views\prestamos1\Details.cshtml" />
+    <Content Include="Views\prestamos1\Edit.cshtml" />
+    <Content Include="Views\prestamos1\Index.cshtml" />
+    <Content Include="Views\inversion1\Create.cshtml" />
+    <Content Include="Views\inversion1\Delete.cshtml" />
+    <Content Include="Views\inversion1\Details.cshtml" />
+    <Content Include="Views\inversion1\Edit.cshtml" />
+    <Content Include="Views\inversion1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

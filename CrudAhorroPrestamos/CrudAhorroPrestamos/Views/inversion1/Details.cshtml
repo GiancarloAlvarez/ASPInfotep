@@ -1,0 +1,149 @@
+﻿@model CrudAhorroPrestamos.Models.inversion1
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>inversion1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasaInteres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasaInteres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRembolso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRembolso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plazo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plazo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+    </dl>
+</div>
+
+<h1>Tabla Amortizacion</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>CuotaInversion</th>
+            <th>Interes Mensual</th>
+            <th>Amortizacion Principal</th>
+            <th>Amortizacion Total</th>
+            <th>Capital Pendiente</th>
+            <th>Fecha</th>
+
+        </tr>
+    </thead>
+    @{
+
+
+        double capital = Convert.ToDouble(Model.MontoInversion);
+        double interes = Convert.ToDouble(Model.TasaInteres) / 1200;
+        double plazo = Convert.ToDouble(Model.Plazo);
+        double total = 0;
+
+        //calculo de la cuota
+        //double cuota = capital * (interes * Math.Pow((1 + interes), plazo) / (1 - Math.Pow(1 + interes, plazo)));
+        double cuota = capital * (interes / (double)(1 - Math.Pow(1 + (double)interes, -plazo)));
+        double interes_mensual = 0;
+        double amortizacion = 0;
+        double amortizacion_total = 0;
+        int i = 1;
+
+        for (i = 1; i <= plazo; i++)
+        {
+            interes_mensual = Math.Round((interes * capital), 2);
+            capital = Math.Round(capital - cuota + interes_mensual, 2);
+
+            //Amortizaciones:
+
+            amortizacion_total += Math.Round(cuota - interes_mensual, 2);
+            amortizacion = cuota - interes_mensual;
+            Console.WriteLine(cuota);
+            total += interes_mensual;
+            <tbody>
+                <tr>
+                    <td>@i</td>
+                    <td>@Math.Round(cuota, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(interes_mensual, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(amortizacion, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(amortizacion_total, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(capital, MidpointRounding.AwayFromZero)</td>
+                </tr>
+            </tbody>
+
+
+        }
+        <tr>
+            <td>total</td>
+            <td></td>
+            <td>@total</td>
+        </tr>
+
+    }
+</table>
+
+<button onclick="imprimirPag()">Imprimir</button>
+
+
+<script>
+    function imprimirPag() {
+
+        window.print();
+
+    }
+
+</script>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_inversion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

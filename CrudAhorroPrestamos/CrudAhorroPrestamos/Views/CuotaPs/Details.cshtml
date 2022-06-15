@@ -68,29 +68,8 @@
 
     </dl>
 </div>
-    <h1>Tabla Amortizacion</h1>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Cuota</th>
-            <th>Interes Mensual</th>
-            <th>Amortizacion Principal</th>
-            <th>Amortizacion Total</th>
-            <th>Capital Pendiente</th>
-            <th>Fecha</th>
+   
 
-        </tr>
-    </thead>
-    @{ 
-        CrudAhorroPrestamos.Models.prestamos prestamos = new CrudAhorroPrestamos.Models.prestamos();
-        double capital =Convert.ToDouble(prestamos.MontoPrestamo);
-
-
-        
-
-    }
-</table>
 
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.id_cuota }) |

@@ -49,7 +49,30 @@
           <Property Name="id_cliente" Type="int" />
           <Property Name="id_prestamo" Type="int" />
         </EntityType>
+        <EntityType Name="CuotaPr">
+          <Key>
+            <PropertyRef Name="id_cuota" />
+          </Key>
+          <Property Name="id_cuota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="MontoCuota" Type="float" />
+          <Property Name="FechaEfectivaCuota" Type="float" />
+          <Property Name="TipoPago" Type="varchar" MaxLength="30" />
+          <Property Name="Plazo" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+          <Property Name="id_prestamo" Type="int" />
+        </EntityType>
         <EntityType Name="Garantia">
+          <Key>
+            <PropertyRef Name="id_garantia" />
+          </Key>
+          <Property Name="id_garantia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoGarantia" Type="varchar" MaxLength="30" />
+          <Property Name="TipoGarantia" Type="varchar" MaxLength="30" />
+          <Property Name="precio" Type="float" />
+          <Property Name="id_prestamo" Type="int" />
+        </EntityType>
+        <EntityType Name="GarantiaPr">
           <Key>
             <PropertyRef Name="id_garantia" />
           </Key>
@@ -71,6 +94,19 @@
           <Property Name="FechaRembolso" Type="datetime" />
           <Property Name="id_cliente" Type="int" />
         </EntityType>
+        <EntityType Name="inversion1">
+          <Key>
+            <PropertyRef Name="id_inversion" />
+          </Key>
+          <Property Name="id_inversion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoInversion" Type="varchar" MaxLength="30" />
+          <Property Name="MontoInversion" Type="float" />
+          <Property Name="TasaInteres" Type="varchar" MaxLength="30" />
+          <Property Name="FechaInversion" Type="datetime" />
+          <Property Name="FechaRembolso" Type="datetime" />
+          <Property Name="Plazo" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+        </EntityType>
         <EntityType Name="prestamos">
           <Key>
             <PropertyRef Name="id_prestamo" />
@@ -84,6 +120,19 @@
           <Property Name="RetornoCapital" Type="datetime" />
           <Property Name="MontoPrestamo" Type="float" />
           <Property Name="TasaInteres" Type="float" />
+          <Property Name="id_cliente" Type="int" />
+        </EntityType>
+        <EntityType Name="prestamos1">
+          <Key>
+            <PropertyRef Name="id_prestamo" />
+          </Key>
+          <Property Name="id_prestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoPrestamo" Type="varchar" MaxLength="30" />
+          <Property Name="FechaSolicitud" Type="datetime" />
+          <Property Name="FechaAprobacion" Type="datetime" />
+          <Property Name="MontoPrestamo" Type="float" />
+          <Property Name="TasaInteres" Type="float" />
+          <Property Name="Plazo" Type="int" />
           <Property Name="id_cliente" Type="int" />
         </EntityType>
         <EntityType Name="Rol">
@@ -186,14 +235,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CuotaP__id_prest__571DF1D5">
-          <End Role="prestamos" Type="Self.prestamos" Multiplicity="0..1" />
-          <End Role="CuotaP" Type="Self.CuotaP" Multiplicity="*" />
+        <Association Name="FK__CuotaPr__id_clie__5CD6CB2B">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="CuotaPr" Type="Self.CuotaPr" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="prestamos">
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="CuotaPr">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CuotaPr__id_pres__5DCAEF64">
+          <End Role="prestamos1" Type="Self.prestamos1" Multiplicity="0..1" />
+          <End Role="CuotaPr" Type="Self.CuotaPr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prestamos1">
               <PropertyRef Name="id_prestamo" />
             </Principal>
-            <Dependent Role="CuotaP">
+            <Dependent Role="CuotaPr">
               <PropertyRef Name="id_prestamo" />
             </Dependent>
           </ReferentialConstraint>
@@ -210,6 +271,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__GarantiaP__id_pr__60A75C0F">
+          <End Role="prestamos1" Type="Self.prestamos1" Multiplicity="0..1" />
+          <End Role="GarantiaPr" Type="Self.GarantiaPr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prestamos1">
+              <PropertyRef Name="id_prestamo" />
+            </Principal>
+            <Dependent Role="GarantiaPr">
+              <PropertyRef Name="id_prestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__inversion__id_cl__3A81B327">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="inversion" Type="Self.inversion" Multiplicity="*" />
@@ -222,6 +295,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__inversion__id_cl__6383C8BA">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="inversion1" Type="Self.inversion1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="inversion1">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__prestamos__id_cl__3D5E1FD2">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="prestamos" Type="Self.prestamos" Multiplicity="*" />
@@ -230,6 +315,18 @@
               <PropertyRef Name="id_cliente" />
             </Principal>
             <Dependent Role="prestamos">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__prestamos__id_cl__59FA5E80">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="prestamos1" Type="Self.prestamos1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="prestamos1">
               <PropertyRef Name="id_cliente" />
             </Dependent>
           </ReferentialConstraint>
@@ -323,9 +420,13 @@
           <EntitySet Name="CuentaBancaria" EntityType="Self.CuentaBancaria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cuota" EntityType="Self.Cuota" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CuotaP" EntityType="Self.CuotaP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuotaPr" EntityType="Self.CuotaPr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Garantia" EntityType="Self.Garantia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GarantiaPr" EntityType="Self.GarantiaPr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inversion" EntityType="Self.inversion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inversion1" EntityType="Self.inversion1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="prestamos" EntityType="Self.prestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prestamos1" EntityType="Self.prestamos1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol_Cliente" EntityType="Self.Rol_Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol_Cliente2" EntityType="Self.Rol_Cliente2" Schema="dbo" store:Type="Tables" />
@@ -346,21 +447,37 @@
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="CuotaP" EntitySet="CuotaP" />
           </AssociationSet>
-          <AssociationSet Name="FK__CuotaP__id_prest__571DF1D5" Association="Self.FK__CuotaP__id_prest__571DF1D5">
-            <End Role="prestamos" EntitySet="prestamos" />
-            <End Role="CuotaP" EntitySet="CuotaP" />
+          <AssociationSet Name="FK__CuotaPr__id_clie__5CD6CB2B" Association="Self.FK__CuotaPr__id_clie__5CD6CB2B">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="CuotaPr" EntitySet="CuotaPr" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CuotaPr__id_pres__5DCAEF64" Association="Self.FK__CuotaPr__id_pres__5DCAEF64">
+            <End Role="prestamos1" EntitySet="prestamos1" />
+            <End Role="CuotaPr" EntitySet="CuotaPr" />
           </AssociationSet>
           <AssociationSet Name="FK__Garantia__id_pre__4316F928" Association="Self.FK__Garantia__id_pre__4316F928">
             <End Role="prestamos" EntitySet="prestamos" />
             <End Role="Garantia" EntitySet="Garantia" />
           </AssociationSet>
+          <AssociationSet Name="FK__GarantiaP__id_pr__60A75C0F" Association="Self.FK__GarantiaP__id_pr__60A75C0F">
+            <End Role="prestamos1" EntitySet="prestamos1" />
+            <End Role="GarantiaPr" EntitySet="GarantiaPr" />
+          </AssociationSet>
           <AssociationSet Name="FK__inversion__id_cl__3A81B327" Association="Self.FK__inversion__id_cl__3A81B327">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="inversion" EntitySet="inversion" />
           </AssociationSet>
+          <AssociationSet Name="FK__inversion__id_cl__6383C8BA" Association="Self.FK__inversion__id_cl__6383C8BA">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="inversion1" EntitySet="inversion1" />
+          </AssociationSet>
           <AssociationSet Name="FK__prestamos__id_cl__3D5E1FD2" Association="Self.FK__prestamos__id_cl__3D5E1FD2">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="prestamos" EntitySet="prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__prestamos__id_cl__59FA5E80" Association="Self.FK__prestamos__id_cl__59FA5E80">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="prestamos1" EntitySet="prestamos1" />
           </AssociationSet>
           <AssociationSet Name="FK__Rol_Clien__id_cl__33D4B598" Association="Self.FK__Rol_Clien__id_cl__33D4B598">
             <End Role="Cliente" EntitySet="Cliente" />
@@ -411,6 +528,9 @@
           <NavigationProperty Name="Rol_Cliente2" Relationship="ADBPrestamosModel.FK__Rol_Clien__id_cl__4CA06362" FromRole="Cliente" ToRole="Rol_Cliente2" />
           <NavigationProperty Name="Rol_Cliente3" Relationship="ADBPrestamosModel.FK__Rol_Clien__id_cl__52593CB8" FromRole="Cliente" ToRole="Rol_Cliente3" />
           <NavigationProperty Name="CuotaP" Relationship="ADBPrestamosModel.FK__CuotaP__id_clien__5629CD9C" FromRole="Cliente" ToRole="CuotaP" />
+          <NavigationProperty Name="CuotaPr" Relationship="ADBPrestamosModel.FK__CuotaPr__id_clie__5CD6CB2B" FromRole="Cliente" ToRole="CuotaPr" />
+          <NavigationProperty Name="prestamos1" Relationship="ADBPrestamosModel.FK__prestamos__id_cl__59FA5E80" FromRole="Cliente" ToRole="prestamos1" />
+          <NavigationProperty Name="inversion1" Relationship="ADBPrestamosModel.FK__inversion__id_cl__6383C8BA" FromRole="Cliente" ToRole="inversion1" />
         </EntityType>
         <EntityType Name="CuentaBancaria">
           <Key>
@@ -684,6 +804,30 @@
             <End Role="prestamos" EntitySet="prestamos" />
             <End Role="CuotaP" EntitySet="CuotaP" />
           </AssociationSet>
+          <EntitySet Name="CuotaPr" EntityType="ADBPrestamosModel.CuotaPr" />
+          <EntitySet Name="GarantiaPr" EntityType="ADBPrestamosModel.GarantiaPr" />
+          <EntitySet Name="prestamos1" EntityType="ADBPrestamosModel.prestamos1" />
+          <AssociationSet Name="FK__CuotaPr__id_clie__5CD6CB2B" Association="ADBPrestamosModel.FK__CuotaPr__id_clie__5CD6CB2B">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="CuotaPr" EntitySet="CuotaPr" />
+          </AssociationSet>
+          <AssociationSet Name="FK__prestamos__id_cl__59FA5E80" Association="ADBPrestamosModel.FK__prestamos__id_cl__59FA5E80">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="prestamos1" EntitySet="prestamos1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CuotaPr__id_pres__5DCAEF64" Association="ADBPrestamosModel.FK__CuotaPr__id_pres__5DCAEF64">
+            <End Role="prestamos1" EntitySet="prestamos1" />
+            <End Role="CuotaPr" EntitySet="CuotaPr" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GarantiaP__id_pr__60A75C0F" Association="ADBPrestamosModel.FK__GarantiaP__id_pr__60A75C0F">
+            <End Role="prestamos1" EntitySet="prestamos1" />
+            <End Role="GarantiaPr" EntitySet="GarantiaPr" />
+          </AssociationSet>
+          <EntitySet Name="inversion1" EntityType="ADBPrestamosModel.inversion1" />
+          <AssociationSet Name="FK__inversion__id_cl__6383C8BA" Association="ADBPrestamosModel.FK__inversion__id_cl__6383C8BA">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="inversion1" EntitySet="inversion1" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Rol_Cliente2">
           <Key>
@@ -806,6 +950,122 @@
             </Principal>
             <Dependent Role="CuotaP">
               <PropertyRef Name="id_prestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CuotaPr">
+          <Key>
+            <PropertyRef Name="id_cuota" />
+          </Key>
+          <Property Name="id_cuota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="MontoCuota" Type="Double" />
+          <Property Name="FechaEfectivaCuota" Type="Double" />
+          <Property Name="TipoPago" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Plazo" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="id_prestamo" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="ADBPrestamosModel.FK__CuotaPr__id_clie__5CD6CB2B" FromRole="CuotaPr" ToRole="Cliente" />
+          <NavigationProperty Name="prestamos1" Relationship="ADBPrestamosModel.FK__CuotaPr__id_pres__5DCAEF64" FromRole="CuotaPr" ToRole="prestamos1" />
+        </EntityType>
+        <EntityType Name="GarantiaPr">
+          <Key>
+            <PropertyRef Name="id_garantia" />
+          </Key>
+          <Property Name="id_garantia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoGarantia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TipoGarantia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Double" />
+          <Property Name="id_prestamo" Type="Int32" />
+          <NavigationProperty Name="prestamos1" Relationship="ADBPrestamosModel.FK__GarantiaP__id_pr__60A75C0F" FromRole="GarantiaPr" ToRole="prestamos1" />
+        </EntityType>
+        <EntityType Name="prestamos1">
+          <Key>
+            <PropertyRef Name="id_prestamo" />
+          </Key>
+          <Property Name="id_prestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoPrestamo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaSolicitud" Type="DateTime" Precision="3" />
+          <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+          <Property Name="MontoPrestamo" Type="Double" />
+          <Property Name="TasaInteres" Type="Double" />
+          <Property Name="Plazo" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="ADBPrestamosModel.FK__prestamos__id_cl__59FA5E80" FromRole="prestamos1" ToRole="Cliente" />
+          <NavigationProperty Name="CuotaPr" Relationship="ADBPrestamosModel.FK__CuotaPr__id_pres__5DCAEF64" FromRole="prestamos1" ToRole="CuotaPr" />
+          <NavigationProperty Name="GarantiaPr" Relationship="ADBPrestamosModel.FK__GarantiaP__id_pr__60A75C0F" FromRole="prestamos1" ToRole="GarantiaPr" />
+        </EntityType>
+        <Association Name="FK__CuotaPr__id_clie__5CD6CB2B">
+          <End Type="ADBPrestamosModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="ADBPrestamosModel.CuotaPr" Role="CuotaPr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="CuotaPr">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__prestamos__id_cl__59FA5E80">
+          <End Type="ADBPrestamosModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="ADBPrestamosModel.prestamos1" Role="prestamos1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="prestamos1">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CuotaPr__id_pres__5DCAEF64">
+          <End Type="ADBPrestamosModel.prestamos1" Role="prestamos1" Multiplicity="0..1" />
+          <End Type="ADBPrestamosModel.CuotaPr" Role="CuotaPr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prestamos1">
+              <PropertyRef Name="id_prestamo" />
+            </Principal>
+            <Dependent Role="CuotaPr">
+              <PropertyRef Name="id_prestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GarantiaP__id_pr__60A75C0F">
+          <End Type="ADBPrestamosModel.prestamos1" Role="prestamos1" Multiplicity="0..1" />
+          <End Type="ADBPrestamosModel.GarantiaPr" Role="GarantiaPr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prestamos1">
+              <PropertyRef Name="id_prestamo" />
+            </Principal>
+            <Dependent Role="GarantiaPr">
+              <PropertyRef Name="id_prestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="inversion1">
+          <Key>
+            <PropertyRef Name="id_inversion" />
+          </Key>
+          <Property Name="id_inversion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoInversion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MontoInversion" Type="Double" />
+          <Property Name="TasaInteres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInversion" Type="DateTime" Precision="3" />
+          <Property Name="FechaRembolso" Type="DateTime" Precision="3" />
+          <Property Name="Plazo" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="ADBPrestamosModel.FK__inversion__id_cl__6383C8BA" FromRole="inversion1" ToRole="Cliente" />
+        </EntityType>
+        <Association Name="FK__inversion__id_cl__6383C8BA">
+          <End Type="ADBPrestamosModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="ADBPrestamosModel.inversion1" Role="inversion1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="inversion1">
+              <PropertyRef Name="id_cliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -972,6 +1232,59 @@
                 <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="id_cuota" ColumnName="id_cuota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuotaPr">
+            <EntityTypeMapping TypeName="ADBPrestamosModel.CuotaPr">
+              <MappingFragment StoreEntitySet="CuotaPr">
+                <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="FechaEfectivaCuota" ColumnName="FechaEfectivaCuota" />
+                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="id_cuota" ColumnName="id_cuota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GarantiaPr">
+            <EntityTypeMapping TypeName="ADBPrestamosModel.GarantiaPr">
+              <MappingFragment StoreEntitySet="GarantiaPr">
+                <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="TipoGarantia" ColumnName="TipoGarantia" />
+                <ScalarProperty Name="CodigoGarantia" ColumnName="CodigoGarantia" />
+                <ScalarProperty Name="id_garantia" ColumnName="id_garantia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prestamos1">
+            <EntityTypeMapping TypeName="ADBPrestamosModel.prestamos1">
+              <MappingFragment StoreEntitySet="prestamos1">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="TasaInteres" ColumnName="TasaInteres" />
+                <ScalarProperty Name="MontoPrestamo" ColumnName="MontoPrestamo" />
+                <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="CodigoPrestamo" ColumnName="CodigoPrestamo" />
+                <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inversion1">
+            <EntityTypeMapping TypeName="ADBPrestamosModel.inversion1">
+              <MappingFragment StoreEntitySet="inversion1">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="FechaRembolso" ColumnName="FechaRembolso" />
+                <ScalarProperty Name="FechaInversion" ColumnName="FechaInversion" />
+                <ScalarProperty Name="TasaInteres" ColumnName="TasaInteres" />
+                <ScalarProperty Name="MontoInversion" ColumnName="MontoInversion" />
+                <ScalarProperty Name="CodigoInversion" ColumnName="CodigoInversion" />
+                <ScalarProperty Name="id_inversion" ColumnName="id_inversion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

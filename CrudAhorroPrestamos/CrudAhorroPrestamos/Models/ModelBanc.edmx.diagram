@@ -24,7 +24,7 @@
         <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_ro__34C8D9D1" ManuallyRouted="false" />
         <AssociationConnector Association="ADBPrestamosModel.FK__Rol_usuar__id_us__47DBAE45" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ADBPrestamosModel.Rol_Cliente2" Width="1.5" PointX="9.375" PointY="5" />
-        <EntityTypeShape EntityType="ADBPrestamosModel.Rol2" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.Rol2" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_cl__4CA06362" />
         <AssociationConnector Association="ADBPrestamosModel.FK__Rol_Clien__id_ro__4D94879B" />
         <EntityTypeShape EntityType="ADBPrestamosModel.Rol_Cliente3" Width="1.5" PointX="8" PointY="9.875" />
@@ -34,6 +34,15 @@
         <EntityTypeShape EntityType="ADBPrestamosModel.CuotaP" Width="1.5" PointX="8.25" PointY="13" />
         <AssociationConnector Association="ADBPrestamosModel.FK__CuotaP__id_clien__5629CD9C" />
         <AssociationConnector Association="ADBPrestamosModel.FK__CuotaP__id_prest__571DF1D5" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.CuotaPr" Width="1.5" PointX="8.25" PointY="17.375" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.GarantiaPr" Width="1.5" PointX="5.25" PointY="20.75" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.prestamos1" Width="1.5" PointX="3" PointY="20.25" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__CuotaPr__id_clie__5CD6CB2B" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__prestamos__id_cl__59FA5E80" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__CuotaPr__id_pres__5DCAEF64" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__GarantiaP__id_pr__60A75C0F" />
+        <EntityTypeShape EntityType="ADBPrestamosModel.inversion1" Width="1.5" PointX="3" PointY="15.875" />
+        <AssociationConnector Association="ADBPrestamosModel.FK__inversion__id_cl__6383C8BA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
