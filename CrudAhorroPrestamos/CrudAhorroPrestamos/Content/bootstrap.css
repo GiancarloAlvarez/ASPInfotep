@@ -6831,4 +6831,14 @@ button.close {
     display: none !important;
   }
 }
+
+.linke{
+    text-decoration:none;
+    color: white;
+}
+
+.linke :hover {
+    text-decoration: none;
+    color: white;
+}
 /*# sourceMappingURL=bootstrap.css.map */
