@@ -6841,4 +6841,15 @@ button.close {
     text-decoration: none;
     color: white;
 }
+
+.linkeB {
+    text-decoration: none;
+    color: black;
+}
+
+    .linkeB :hover {
+        text-decoration: none;
+        color: black;
+        text-decoration-line:none;
+    }
 /*# sourceMappingURL=bootstrap.css.map */
